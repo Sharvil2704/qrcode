@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QR Code Generator</title>
+    <script src="https://cdn.rawgit.com/davidshimjs/qrcodejs/gh-pages/qrcode.min.js"></script>
+</head>
+<body>
+    <h1>QR Code Generator</h1>
+
+    <label for="inputText">Enter text to encode:</label>
+    <input type="text" id="inputText" placeholder="Enter text">
+
+    <button onclick="generateQRCode()">Generate QR Code</button>
+
+    <div id="qrcode"></div>
+
+    <script>
+        function generateQRCode() {
+            var inputText = document.getElementById('inputText').value;
+            var qrcode = new QRCode(document.getElementById("qrcode"), {
+                text: inputText,
+                width: 128,
+                height: 128
+            });
+
+            // You can handle the scanning event here and redirect accordingly
+            // In this example, let's assume scanning the QR code redirects to an "OK" message
+            qrcode._el.onclick = function () {
+                window.location.href = "ok-message.html";
+            };
+        }
+    </script>
+</body>
+</html>
